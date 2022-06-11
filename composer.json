@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "enricodelazzari/laravel-html-table-to-array",
+    "description": "This is my package laravel-html-table-to-array",
     "keywords": [
-        ":vendor_name",
+        "enricodelazzari",
         "laravel",
-        ":package_slug"
+        "laravel-html-table-to-array"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/enricodelazzari/laravel-html-table-to-array",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Enrico De Lazzari",
+            "email": "enrico.delazzari@h-farm.com",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "EnricoDeLazzari\\HtmlTableToArray\\": "src",
+            "EnricoDeLazzari\\HtmlTableToArray\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "EnricoDeLazzari\\HtmlTableToArray\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -56,10 +56,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "EnricoDeLazzari\\HtmlTableToArray\\HtmlTableToArrayServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "HtmlTableToArray": "EnricoDeLazzari\\HtmlTableToArray\\Facades\\HtmlTableToArray"
             }
         }
     },

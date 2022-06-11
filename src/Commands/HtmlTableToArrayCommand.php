@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace EnricoDeLazzari\HtmlTableToArray\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class HtmlTableToArrayCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-html-table-to-array';
 
     public $description = 'My command';
 

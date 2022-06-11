@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace EnricoDeLazzari\HtmlTableToArray;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use EnricoDeLazzari\HtmlTableToArray\Commands\HtmlTableToArrayCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class HtmlTableToArrayServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('laravel-html-table-to-array')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_skeleton_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_laravel-html-table-to-array_table')
+            ->hasCommand(HtmlTableToArrayCommand::class);
     }
 }
