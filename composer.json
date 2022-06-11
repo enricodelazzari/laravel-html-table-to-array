@@ -35,8 +35,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EnricoDeLazzari\\HtmlTableToArray\\": "src",
-            "EnricoDeLazzari\\HtmlTableToArray\\Database\\Factories\\": "database/factories"
+            "EnricoDeLazzari\\HtmlTableToArray\\": "src"
         }
     },
     "autoload-dev": {
