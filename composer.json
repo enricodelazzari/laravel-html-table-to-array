@@ -51,16 +51,17 @@
         "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
     },
     "extra": {
         "laravel": {
             "providers": [
                 "EnricoDeLazzari\\HtmlTableToArray\\HtmlTableToArrayServiceProvider"
-            ],
-            "aliases": {
-                "HtmlTableToArray": "EnricoDeLazzari\\HtmlTableToArray\\Facades\\HtmlTableToArray"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
