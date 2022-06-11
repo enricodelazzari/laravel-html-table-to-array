@@ -2,9 +2,9 @@
 
 namespace EnricoDeLazzari\HtmlTableToArray\Tests;
 
+use EnricoDeLazzari\HtmlTableToArray\HtmlTableToArrayServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use EnricoDeLazzari\HtmlTableToArray\HtmlTableToArrayServiceProvider;
 
 class TestCase extends Orchestra
 {

@@ -2,9 +2,9 @@
 
 namespace EnricoDeLazzari\HtmlTableToArray;
 
+use EnricoDeLazzari\HtmlTableToArray\Commands\HtmlTableToArrayCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use EnricoDeLazzari\HtmlTableToArray\Commands\HtmlTableToArrayCommand;
 
 class HtmlTableToArrayServiceProvider extends PackageServiceProvider
 {
