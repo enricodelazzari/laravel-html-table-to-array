@@ -2,7 +2,6 @@
 
 namespace EnricoDeLazzari\HtmlTableToArray;
 
-use EnricoDeLazzari\HtmlTableToArray\Commands\HtmlTableToArrayCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
