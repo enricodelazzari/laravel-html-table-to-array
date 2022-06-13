@@ -5,8 +5,8 @@ namespace EnricoDeLazzari\HtmlTableToArray;
 use DOMDocument;
 use DOMNodeList;
 use DOMXPath;
-use EnricoDeLazzari\HtmlTableToArray\Support\ListToCollection;
 use EnricoDeLazzari\HtmlTableToArray\Support\DOMElementToCollection;
+use EnricoDeLazzari\HtmlTableToArray\Support\ListToCollection;
 
 class HtmlTableToArray
 {

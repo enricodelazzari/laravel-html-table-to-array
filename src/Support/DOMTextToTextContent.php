@@ -1,9 +1,7 @@
 <?php
 
-
 namespace EnricoDeLazzari\HtmlTableToArray\Support;
 
-use DOMElement;
 use DOMText;
 
 class DOMTextToTextContent
