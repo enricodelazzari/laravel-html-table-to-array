@@ -23,4 +23,20 @@ class TestCase extends Orchestra
     {
         //
     }
+
+    protected function getJsonFileContent(string $filename): array
+    {
+        $json = file_get_contents(
+            __DIR__ . "/Support/Json/{$filename}"
+        );
+
+        return json_decode($json, true);
+    }
+
+    protected function getHtmlFileContent(string $filename): string
+    {
+        return file_get_contents(
+            __DIR__ . "/Support/Html/{$filename}"
+        );
+    }
 }
