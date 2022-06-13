@@ -2,12 +2,14 @@
 
 use EnricoDeLazzari\HtmlTableToArray\HtmlTableToArray;
 
-it(description: 'can test', closure: function () {
+it(description: 'can convert base html table in array by row', closure: function (string $input, string $output) {
     $array = HtmlTableToArray::fromHtml(
-        html: $this->getHtmlFileContent('base.html')
+        html: $this->getHtmlFileContent("{$input}.html")
     );
 
     expect($array[0])->toBe(
-        $this->getJsonFileContent('base-row.json')
+        $this->getJsonFileContent("{$output}.json")
     );
-});
+})->with([
+    ['input' => 'base', 'output' => 'base-row'],
+]);
