@@ -10,14 +10,31 @@ use EnricoDeLazzari\HtmlTableToArray\Support\ListToCollection;
 
 class HtmlTableToArray
 {
-    public function make(DOMNodeList $nodeList): array
+    public function __construct(
+        protected DOMNodeList $nodeList
+    ) {
+    }
+
+    public function make(): array
     {
-        return ListToCollection::make($nodeList)
-            ->map(new DOMElementToCollection())
+        $elements = ListToCollection::make($this->nodeList)
+            ->map(callback: (new DOMElementToCollection())->filter(
+                callback: fn ($element) => $element->nodeName !== 'th'
+            ))
+            ->first();
+
+        $headings = ListToCollection::make($this->nodeList)
+            ->map(callback: (new DOMElementToCollection())->filter(
+                callback: fn ($element) => in_array($element->nodeName, ['tr', 'th'], true)
+            ))
+            ->flatten();
+
+        return $elements
+            ->map(fn ($items) => $headings->combine($items))
             ->toArray();
     }
 
-    public static function fromHtml(string $html): array
+    public static function fromHtml(string $html): self
     {
         $document = new DOMDocument();
         @$document->loadHTML($html);
@@ -25,22 +42,24 @@ class HtmlTableToArray
         return static::fromDOMDocument($document);
     }
 
-    public static function fromDOMDocument(DOMDocument $document): array
+    public static function fromDOMDocument(DOMDocument $document): self
     {
         return static::fromDOMXPath(
             new DOMXPath($document)
         );
     }
 
-    public static function fromDOMXPath(DOMXPath $xpath): array
+    public static function fromDOMXPath(DOMXPath $xpath): self
     {
         return static::fromDOMNodeList(
             $xpath->query('//table')
         );
     }
 
-    public static function fromDOMNodeList(DOMNodeList $nodeList): array
+    public static function fromDOMNodeList(DOMNodeList $nodeList): self
     {
-        return (new self())->make($nodeList);
+        return new self(
+            $nodeList
+        );
     }
 }

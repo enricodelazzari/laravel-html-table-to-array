@@ -2,34 +2,44 @@
 
 namespace EnricoDeLazzari\HtmlTableToArray\Support;
 
+use Closure;
 use DOMElement;
 use DOMText;
 use Illuminate\Support\Collection;
 
 class DOMElementToCollection
 {
-    public function __invoke(DOMElement|DOMText $tr): Collection|string|null
+    protected ?Closure $filterCallback = null;
+
+    public function __invoke(DOMElement|DOMText $element): Collection|string|null
     {
-        return static::make($tr);
+        return $this->make($element);
     }
 
-    public static function make(DOMElement|DOMText $element): Collection|string|null
+    public function make(DOMElement|DOMText $element): Collection|string|null
     {
         if (! $element instanceof DOMElement) {
             return null;
         }
 
-        return ListToCollection::make($element->childNodes)
-            ->map(new self())
+        $collection = ListToCollection::make($element->childNodes)
+            ->filter(callback: $this->filterCallback ?? fn ($item) => true)
+            ->map((new self())->filter($this->filterCallback))
             ->filter()
-            ->values()
-            ->when(
-                static::hasDOMTextChild($element),
-                fn () => DOMTextToTextContent::make($element->childNodes[0])
-            );
+            ->values();
+
+        if ($this->hasDOMTextChild($element)) {
+            return DOMTextToTextContent::make($element->childNodes[0]);
+        }
+
+        if ($collection->isEmpty()) {
+            return null;
+        }
+
+        return $collection;
     }
 
-    protected static function hasDOMTextChild(DOMElement $element): bool
+    protected function hasDOMTextChild(DOMElement $element): bool
     {
         if ($element->childNodes->count() > 1) {
             return false;
@@ -40,5 +50,12 @@ class DOMElementToCollection
         }
 
         return true;
+    }
+
+    public function filter(?Closure $callback = null): self
+    {
+        $this->filterCallback = $callback;
+
+        return $this;
     }
 }
