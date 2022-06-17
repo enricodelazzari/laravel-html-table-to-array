@@ -31,7 +31,9 @@ class HtmlTableToArray
             ->flatten();
 
         return $elements
-            ->map(fn ($items) => $headings->combine($items))
+            ->map(fn ($items) => $headings->combine(
+                $items->pad($headings->count(), null)
+            ))
             ->toArray();
     }
 
