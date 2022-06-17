@@ -25,7 +25,8 @@ class HtmlTableToArray
 
         $headings = ListToCollection::make($this->nodeList)
             ->map(callback: (new DOMElementToCollection())->filter(
-                callback: fn ($element) => in_array($element->nodeName, ['tr', 'th'], true)
+                // TODO: remove tbody & a tags
+                callback: fn ($element) => in_array($element->nodeName, ['tbody', 'tr', 'th', 'a'], true)
             ))
             ->flatten();
 
